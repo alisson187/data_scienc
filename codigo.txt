@@ -1,0 +1,32 @@
+01 - Faça um programa de análise de dados que leia a massa de dados de notas e mostre os 12 primeiros registro, os 6 últimos  e o tamanha da massa de dados;
+
+import pandas as pd
+
+dados = pd.read_csv('notas.csv')
+
+print("Os 12 primeiros registros:")
+print(dados.head(12))
+
+print("\nOs 6 últimos registros:")
+print(dados.tail(6))
+
+print(f"\nTamanho da massa de dados: {dados.shape[0]} registros")
+
+02 - Faça um programa de análise de dados que leia da massa de dados de notas o filme com “ID=32” e se a nota for maior que 3 informe o nome e se é um filme bom. 
+
+import pandas as pd
+
+dados = pd.read_csv('notas.csv')
+
+filme_id_32 = dados[dados['ID'] == 32]
+
+if not filme_id_32.empty:
+    nota = filme_id_32['nota'].values[0]
+    nome_filme = filme_id_32['nome'].values[0]
+    
+    if nota > 3:
+        print(f"O filme '{nome_filme}' (ID=32) é bom, com nota {nota}")
+    else:
+        print(f"O filme '{nome_filme}' (ID=32) tem nota {nota} e não é considerado bom")
+else:
+    print("Filme com ID=32 não encontrado")
